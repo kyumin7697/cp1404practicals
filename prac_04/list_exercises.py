@@ -1,3 +1,4 @@
+#Basic list operations
 numbers = []
 
 for i in range(5):
@@ -9,3 +10,16 @@ print(f"The last number is {numbers[-1]}")
 print(f"The smallest number is {min(numbers)}")
 print(f"The largest number is {max(numbers)}")
 print(f"The average of the numbers is {sum(numbers) / len(numbers)}")
+
+#Woefully inadequate security checker
+usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45',
+             'BaseInterpreterInterface', 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole',
+             'InterpreterInterface', 'StartServer', 'bob']
+
+input_username = input("Enter your username: ")
+
+try:
+    usernames.index(input_username)
+    print("Access granted")
+except ValueError:
+    print("Access denied")
