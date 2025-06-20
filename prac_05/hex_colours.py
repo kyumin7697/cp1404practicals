@@ -14,4 +14,12 @@ COLOUR_TO_HEX = {
     "BlanchedAlmond": "#ffebcd",
     "Blue": "#0000ff"
 }
+print(COLOUR_TO_HEX)
 
+colour_name = input("Enter a colour name: ").lower()
+while colour_name != "":
+    try:
+        print(f"{colour_name.title()} has the code {COLOUR_TO_HEX[colour_name]}")
+    except KeyError:
+        print("Invalid colour name")
+    colour_name = input("Enter a colour name: ").lower()
