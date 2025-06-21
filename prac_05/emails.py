@@ -1,7 +1,7 @@
 """""
 Emails
 Estimate: 30 minutes
-Actual:
+Actual: 35 minutes
 pseudocode:
 define extract_name_from_email function
     get part before '@'
@@ -30,6 +30,7 @@ end main function
 """
 
 def main():
+    email_to_name = {}
     while True:
         email = input("Email: ")
         if email == "":
@@ -39,6 +40,12 @@ def main():
         confirmation = input(f"Is your name {name}? (Y/n) ").strip().lower()
         if confirmation not in ('', 'y'):
             name = input("Name: ")
+
+        email_to_name[email] = name
+
+    print()
+    for email, name in email_to_name.items():
+        print(f"{name} ({email})")
 
 def extract_name_from_email(email):
     """Extracting names from emails"""
