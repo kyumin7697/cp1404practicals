@@ -39,3 +39,17 @@ define get_countries function
 end main function
 """
 
+
+def read_wimbledon_data(filename):
+    """Read the Wimbledon data from a file and return a list of [champion, country] pairs."""
+    data = []
+    with open(filename, "r", encoding="utf-8-sig") as in_file:
+        next(in_file)
+        for line in in_file:
+            parts = line.strip().split(",")
+            champion = parts[2]
+            country = parts[1]
+            data.append([champion, country])
+    return data
+
+
