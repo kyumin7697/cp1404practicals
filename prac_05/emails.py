@@ -35,4 +35,10 @@ def main():
         if email == "":
             break
 
+def extract_name_from_email(email):
+    """Extracting names from emails"""
+    parts = email.split('@')[0].split('.')
+    name = ' '.join(parts).title()
+    return name
+
 main()
