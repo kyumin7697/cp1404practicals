@@ -61,3 +61,6 @@ def count_champions(data):
             champion_to_wins[champion] = 1
     return champion_to_wins
 
+def get_countries(data):
+    """Return a set of all unique countries from the data."""
+    return {country for i, country in data}
