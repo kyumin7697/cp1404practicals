@@ -39,7 +39,6 @@ define get_countries function
 end main function
 """
 
-
 def read_wimbledon_data(filename):
     """Read the Wimbledon data from a file and return a list of [champion, country] pairs."""
     data = []
@@ -52,4 +51,13 @@ def read_wimbledon_data(filename):
             data.append([champion, country])
     return data
 
+def count_champions(data):
+    """Return a dictionary of champion names to number of wins."""
+    champion_to_wins = {}
+    for champion, i in data:
+        if champion in champion_to_wins:
+            champion_to_wins[champion] += 1
+        else:
+            champion_to_wins[champion] = 1
+    return champion_to_wins
 
