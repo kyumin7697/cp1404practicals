@@ -16,6 +16,8 @@ def main():
         else:
             word_to_count[word] = 1
 
-    print(word_to_count)
+    sorted_words = sorted(word_to_count.keys())
+    for word in sorted_words:
+        print(word, ":", word_to_count[word])
 
 main()
