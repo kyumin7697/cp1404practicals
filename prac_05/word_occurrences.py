@@ -1,9 +1,10 @@
 """""
 Word Occurrences
 Estimate: 40 minutes
-Actual:
+Actual: 43 minutes
 """
-#Text: this is a collection of words of nice words this is a fun thing it is
+
+#Text(ex): this is a collection of words of nice words this is a fun thing it is
 def main():
     text = input("Text: ")
     words = text.split()
@@ -17,7 +18,10 @@ def main():
             word_to_count[word] = 1
 
     sorted_words = sorted(word_to_count.keys())
+
+    max_word_length = max(len(word) for word in sorted_words)
+
     for word in sorted_words:
-        print(word, ":", word_to_count[word])
+        print(f"{word:{max_word_length}} : {word_to_count[word]}")
 
 main()
