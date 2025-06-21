@@ -35,6 +35,11 @@ def main():
         if email == "":
             break
 
+        name = extract_name_from_email(email)
+        confirmation = input(f"Is your name {name}? (Y/n) ").strip().lower()
+        if confirmation not in ('', 'y'):
+            name = input("Name: ")
+
 def extract_name_from_email(email):
     """Extracting names from emails"""
     parts = email.split('@')[0].split('.')
