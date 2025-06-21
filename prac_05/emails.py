@@ -29,4 +29,10 @@ define main function
 end main function
 """
 
+def main():
+    while True:
+        email = input("Email: ")
+        if email == "":
+            break
 
+main()
