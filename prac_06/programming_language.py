@@ -9,8 +9,12 @@ class ProgrammingLanguage:
     """Represent a programming language."""
 
     def __init__(self, name: str, typing: str, reflection: bool, year: int):
-        """Initialise a ProgrammingLanguage instance."""
+        """Create the fields and set them to the parameters passed in"""
         self.name = name
         self.typing = typing  # "Static" or "Dynamic"
         self.reflection = reflection  # True/False
         self.year = year
+
+    def is_dynamic(self):
+        """Return True/False if the programming language is dynamically typed or not."""
+        return self.typing.lower() == "dynamic"
