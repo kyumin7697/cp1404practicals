@@ -5,7 +5,7 @@ Estimate: 10 min
 Actual:  min
 """
 
-from programming_language import ProgrammingLanguage
+from prac_06.programming_language import ProgrammingLanguage
 
 
 def main():
