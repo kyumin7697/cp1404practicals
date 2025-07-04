@@ -1,6 +1,6 @@
 """
 Estimate: 50 minutes
-Actual:
+Actual: 60 minutes
 pseudocode:
 define main function
     filename = "wimbledon.csv"
@@ -39,6 +39,20 @@ define get_countries function
 end main function
 """
 
+
+def main():
+    filename = "wimbledon.csv"
+    data = read_wimbledon_data(filename)
+    champion_to_wins = count_champions(data)
+    countries = get_countries(data)
+
+    print("Wimbledon Champions:")
+    for champion, wins in champion_to_wins.items():
+        print(f"{champion} {wins}")
+
+    print(f"\nThese {len(countries)} countries have won Wimbledon:")
+    print(", ".join(sorted(countries)))
+
 def read_wimbledon_data(filename):
     """Read the Wimbledon data from a file and return a list of [champion, country] pairs."""
     data = []
@@ -64,3 +78,5 @@ def count_champions(data):
 def get_countries(data):
     """Return a set of all unique countries from the data."""
     return {country for i, country in data}
+
+main()
