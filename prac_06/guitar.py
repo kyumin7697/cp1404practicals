@@ -3,7 +3,7 @@ guitar.py
 
 Estimate: 60 min
 Start: 04/07/2025 14:10
-Actual:
+Actual: 40 min
 """
 
 class Guitar:
@@ -21,7 +21,7 @@ class Guitar:
 
     def get_age(self):
         """Return the guitar's age in years."""
-        current_year = 2025
+        current_year = 2022
         return current_year - self.year
 
     def is_vintage(self):
