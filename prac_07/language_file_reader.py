@@ -68,6 +68,8 @@ def using_namedtuple():
 
     for row in reader:
         # print(row)
+        row[2] = row[2].lower() == "yes"
+        row[4] = row[4].lower() == "yes"
         language = Language._make(row)
         print(repr(language))
     in_file.close()
