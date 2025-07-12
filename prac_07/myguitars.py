@@ -36,3 +36,12 @@ def get_new_guitars():
         new_guitars.append(Guitar(name, year, cost))
     return new_guitars
 
+def save_guitars(filename, guitars):
+    """Write the list of guitars to a CSV file."""
+    with open(filename, 'w') as out_file:
+        for guitar in guitars:
+            print(f"{guitar.name},{guitar.year},{guitar.cost}", file=out_file)
+
+if __name__ == "__main__":
+    main()
+
