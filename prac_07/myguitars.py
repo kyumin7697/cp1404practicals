@@ -1,11 +1,30 @@
 """
 myguitars.py
 
+Estimate: 50 min
+Start: 12/07/2025 11:00
+Actual: 60 min
 """
 
 from guitar import Guitar
 
 FILENAME = "guitars.csv"
+
+def main():
+    """Main program to load, display, sort, add, and save guitars."""
+    guitars = load_guitars(FILENAME)
+    print("These are my guitars:")
+    display_guitars(guitars)
+
+    guitars.sort()
+    print("\nThese are my guitars sorted by year:")
+    display_guitars(guitars)
+
+    print("\nAdd your new guitars:")
+    guitars += get_new_guitars()
+
+    save_guitars(FILENAME, guitars)
+    print(f"\nSaved {len(guitars)} guitars to {FILENAME}.")
 
 def load_guitars(filename):
     """Read guitars from a CSV file and return a list of Guitar objects."""
