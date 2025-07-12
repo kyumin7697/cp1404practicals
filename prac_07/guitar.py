@@ -2,7 +2,7 @@
 guitar.py
 
 Estimate: 60 min
-Start: 04/07/2025 14:10
+Start: 12/07/2025 10:50
 Actual: 40 min
 """
 
@@ -27,3 +27,7 @@ class Guitar:
     def is_vintage(self):
         """Return True if the guitar is 50+ years old, False otherwise."""
         return self.get_age() >= 50
+
+    def __lt__(self, other):
+        """Enable sorting by year (older guitars first)."""
+        return self.year < other.year
