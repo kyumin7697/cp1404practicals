@@ -111,6 +111,32 @@ def add_new_project(projects):
     except ValueError:
         print("Invalid input.")
 
+def update_project(projects):
+    for i, p in enumerate(projects):
+        print(f"{i} {p}")
+    try:
+        index = int(input("Project choice: "))
+        project = projects[index]
+    except (ValueError, IndexError):
+        print("Invalid project number.")
+        return
+
+    print(project)
+    new_percent = input("New Percentage: ")
+    new_priority = input("New Priority: ")
+
+    if new_percent:
+        try:
+            project.completion_percentage = int(new_percent)
+        except ValueError:
+            print("Invalid percentage input.")
+    if new_priority:
+        try:
+            project.priority = int(new_priority)
+        except ValueError:
+            print("Invalid priority input.")
+
+
 
 if __name__ == '__main__':
     main()
