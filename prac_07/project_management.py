@@ -97,6 +97,19 @@ def filter_projects_by_date(projects):
     for p in sorted(filtered, key=attrgetter("start_date")):
         print(p)
 
+def add_new_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date_str = input("Start date (dd/mm/yyyy): ")
+    priority = input("Priority: ")
+    cost = input("Cost estimate: $")
+    percent = input("Percent complete: ")
+
+    try:
+        new_project = Project(name, start_date_str, priority, cost, percent)
+        projects.append(new_project)
+    except ValueError:
+        print("Invalid input.")
 
 
 if __name__ == '__main__':
