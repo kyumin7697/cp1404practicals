@@ -136,7 +136,14 @@ def update_project(projects):
         except ValueError:
             print("Invalid priority input.")
 
-
+def quit_program(projects):
+    choice = input(f"Would you like to save to {FILENAME}? ").lower()
+    if choice in ("y", "yes"):
+        save_projects(FILENAME, projects)
+        print(f"Saved to {FILENAME}")
+    else:
+        print("No save performed.")
+    print("Thank you for using custom-built project management software.")
 
 if __name__ == '__main__':
     main()
