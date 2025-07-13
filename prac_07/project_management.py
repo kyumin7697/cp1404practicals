@@ -12,6 +12,23 @@ from operator import attrgetter
 
 FILENAME = "projects.txt"
 
+def load_projects(filename):
+    projects = []
+    with open(filename, 'r') as in_file:
+        next(in_file)  # skip header
+        for line in in_file:
+            parts = line.strip().split('\t')
+            project = Project(*parts)
+            projects.append(project)
+    return projects
+
+def save_projects(filename, projects):
+    with open(filename, 'w') as out_file:
+        out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            out_file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
+                           f"{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+
 def main():
     print("Welcome to Pythonic Project Management")
 
@@ -25,7 +42,7 @@ def main():
         print(menu)
         choice = input(">>> ").lower()
         if choice == "l":
-            load_projects(projects)
+            load_new_projects(projects)
         elif choice == "s":
             save_file(projects)
         elif choice == "d":
@@ -42,7 +59,7 @@ def main():
         else:
             print("Invalid choice")
 
-def load_projects(projects):
+def load_new_projects(projects):
     filename = input("Filename: ")
     try:
         projects.clear()
@@ -50,6 +67,11 @@ def load_projects(projects):
         print(f"{len(projects)} projects loaded from {filename}")
     except FileNotFoundError:
         print("error")
+
+def save_file(projects):
+    filename = input("Filename to save to: ")
+    save_projects(filename, projects)
+    print(f"{len(projects)} projects saved to {filename}")
 
 
 
