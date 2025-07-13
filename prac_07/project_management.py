@@ -3,7 +3,7 @@ project_management.py
 
 Estimate: 70 min
 Start: 13/07/2025 12:40
-Actual:
+Actual: 80 min
 """
 
 from project import Project
@@ -13,6 +13,7 @@ from operator import attrgetter
 FILENAME = "projects.txt"
 
 def load_projects(filename):
+    """Load projects from a given filename and return them as a list of Project objects."""
     projects = []
     with open(filename, 'r') as in_file:
         next(in_file)  # skip header
@@ -23,6 +24,7 @@ def load_projects(filename):
     return projects
 
 def save_projects(filename, projects):
+    """Save the given list of Project objects to the specified filename."""
     with open(filename, 'w') as out_file:
         out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
         for project in projects:
@@ -30,6 +32,7 @@ def save_projects(filename, projects):
                            f"{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
 
 def main():
+    """Main function to run the project management menu system."""
     print("Welcome to Pythonic Project Management")
 
     projects = load_projects(FILENAME)
@@ -60,6 +63,7 @@ def main():
             print("Invalid choice")
 
 def load_new_projects(projects):
+    """Prompt user for a filename and load projects from that file into the list."""
     filename = input("Filename: ")
     try:
         projects.clear()
@@ -69,11 +73,13 @@ def load_new_projects(projects):
         print("error")
 
 def save_file(projects):
+    """Prompt user for a filename and save the current projects list to that file."""
     filename = input("Filename to save to: ")
     save_projects(filename, projects)
     print(f"{len(projects)} projects saved to {filename}")
 
 def display_projects(projects):
+    """Display incomplete and completed projects, each sorted by priority."""
     incomplete = [p for p in projects if not p.is_complete()]
     complete = [p for p in projects if p.is_complete()]
 
@@ -86,6 +92,7 @@ def display_projects(projects):
         print(f"  {p}")
 
 def filter_projects_by_date(projects):
+    """Prompt for a date and display projects starting after that date."""
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")
     try:
         filter_date = datetime.strptime(date_string, "%d/%m/%Y").date()
@@ -98,6 +105,7 @@ def filter_projects_by_date(projects):
         print(p)
 
 def add_new_project(projects):
+    """Prompt user for details and add a new project to the list."""
     print("Let's add a new project")
     name = input("Name: ")
     start_date_str = input("Start date (dd/mm/yyyy): ")
@@ -112,6 +120,7 @@ def add_new_project(projects):
         print("Invalid input.")
 
 def update_project(projects):
+    """Allow user to choose a project and update its completion % and/or priority."""
     for i, p in enumerate(projects):
         print(f"{i} {p}")
     try:
@@ -137,6 +146,7 @@ def update_project(projects):
             print("Invalid priority input.")
 
 def quit_program(projects):
+    """Ask user if they want to save to default file and then exit the program."""
     choice = input(f"Would you like to save to {FILENAME}? ").lower()
     if choice in ("y", "yes"):
         save_projects(FILENAME, projects)
