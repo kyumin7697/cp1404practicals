@@ -73,7 +73,17 @@ def save_file(projects):
     save_projects(filename, projects)
     print(f"{len(projects)} projects saved to {filename}")
 
+def display_projects(projects):
+    incomplete = [p for p in projects if not p.is_complete()]
+    complete = [p for p in projects if p.is_complete()]
 
+    print("Incomplete projects:")
+    for p in sorted(incomplete, key=attrgetter("priority")):
+        print(f"  {p}")
+
+    print("Completed projects:")
+    for p in sorted(complete, key=attrgetter("priority")):
+        print(f"  {p}")
 
 
 
