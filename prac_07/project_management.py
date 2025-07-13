@@ -25,9 +25,9 @@ def main():
         print(menu)
         choice = input(">>> ").lower()
         if choice == "l":
-            load_new_projects(projects)
+            load_projects(projects)
         elif choice == "s":
-            save_to_new_file(projects)
+            save_file(projects)
         elif choice == "d":
             display_projects(projects)
         elif choice == "f":
@@ -42,7 +42,18 @@ def main():
         else:
             print("Invalid choice")
 
-# 나머지 함수들 아래에 하나씩 추가할 예정
+def load_projects(projects):
+    filename = input("Filename: ")
+    try:
+        projects.clear()
+        projects.extend(load_projects(filename))
+        print(f"{len(projects)} projects loaded from {filename}")
+    except FileNotFoundError:
+        print("error")
+
+
+
+
 
 if __name__ == '__main__':
     main()
