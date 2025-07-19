@@ -1,9 +1,30 @@
 BoxLayout:
     orientation: 'vertical'
-#    orientation: 'horizontal'
+    spacing: 10
+    padding: 20
+
     Button:
-        text: 'one'
+        text: 'Clear'
+        font_size: 24
+        background_color: 0.3, 0.3, 0.3, 1
+        on_press: app.handle_clear()
+
+    TextInput:
+        id: input_name
+        text: 'Guido'
+        font_size: 24
+        size_hint_y: None
+        height: 50
+        multiline: False
+
     Button:
-        text: 'two'
-    Button:
-        text: 'three'
+        text: 'Greet'
+        font_size: 24
+        background_color: 0.3, 0.3, 0.3, 1
+        on_press: app.handle_greet()
+
+    Label:
+        id: output_label
+        text: ''
+        font_size: 24
+        color: 1, 1, 0, 1  # 노란색
